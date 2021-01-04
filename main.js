@@ -6,26 +6,28 @@ const fizzBuzzSingleNumber = (num) => {
     return "Fizz"
   } else if (num % 5 === 0) {
     return "Buzz"
+  } else {
+    return num
   }
 }
-const yellAll = (strArr) => {
-  const newArr = []
-  for (const str of strArr) {
-    const result = str.toUpperCase()
-    newArr.push(result)
-  }
-  return newArr
-}
+
+
+const yellAll = (strArr) => strArr.map((str) => str.toUpperCase())
+
 
 const triStateArea = (citiesArr) => {
   const newArr = []
   for (const city of citiesArr) {
-    
-    if (city.endsWith('NY') || city.endsWith('CT')  || city.endsWith('NJ')) {
+    if (city.toUpperCase().endsWith('NY') || city.toUpperCase().endsWith('CT') || city.toUpperCase().endsWith('NJ')) {
       newArr.push(city)
     }
   } return newArr
 }
+
+
+const triStateAreaAlt = (citiesArr) => citiesArr.filter((city) => city.toUpperCase().endsWith('NY')
+  || city.toUpperCase().endsWith('CT') || city.toUpperCase().endsWith('NJ'))
+
 
 const uppercaseCount = (strings) => {
   const newArr = []
@@ -33,21 +35,25 @@ const uppercaseCount = (strings) => {
     if (str.toUpperCase() === str) {
       newArr.push(str)
     }
-    } return newArr.length
+  } return newArr.length
 }
+
+
+const uppercaseCountAlt = (strings) => strings.filter((str) => str.toUpperCase() === str).length
+
 
 const containsDigit = (strings) => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'
   for (const str of strings) {
     if (!str.includes(letters)) {
       return true
-    } else if (!str.includes(letters)) {
-      return false
-    } else if (str = NaN) {
-      return true
-    }
+    } else if (
+      Number.isInteger(strings)) {
+        return false
+      }
   }
 }
+
 
 const containsLowerCase = (str) => {
   if (str.toLowerCase()) {
@@ -56,6 +62,7 @@ const containsLowerCase = (str) => {
     return false
   }
 }
+
 
 const containsUpperCase = (str) => {
   if (str.toLowerCase() && !str.toUpperCase()) {
