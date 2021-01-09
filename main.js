@@ -11,74 +11,102 @@ const fizzBuzzSingleNumber = (num) => {
   }
 }
 
-
 const yellAll = (strArr) => strArr.map((str) => str.toUpperCase())
 
-
-const triStateArea = (citiesArr) => {
-  const newArr = []
-  for (const city of citiesArr) {
-    if (city.toUpperCase().endsWith('NY') || city.toUpperCase().endsWith('CT') || city.toUpperCase().endsWith('NJ')) {
-      newArr.push(city)
-    }
-  } return newArr
-}
-
-
-const triStateAreaAlt = (citiesArr) => citiesArr.filter((city) => city.toUpperCase().endsWith('NY')
+const triStateArea = (citiesArr) => citiesArr.filter((city) => city.toUpperCase().endsWith('NY')
   || city.toUpperCase().endsWith('CT') || city.toUpperCase().endsWith('NJ'))
 
-
-const uppercaseCount = (strings) => {
-  const newArr = []
-  for (const str of strings) {
-    if (str.toUpperCase() === str) {
-      newArr.push(str)
-    }
-  } return newArr.length
-}
-
-
-const uppercaseCountAlt = (strings) => strings.filter((str) => str.toUpperCase() === str).length
-
+const uppercaseCount = (str) => str.filter((x) => x.toUpperCase() === x).length
 
 const containsDigit = (strings) => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'
-  for (const str of strings) {
-    if (!str.includes(letters)) {
-      return true
-    } else if (
-      Number.isInteger(strings)) {
-        return false
-      }
-  }
-}
+  let newArr = []
+  const digits = "1234567890"
 
+  for (let str of strings) {
+    if (digits.includes(str)) {
+      return true
+    }
+  }
+  return false
+}
 
 const containsLowerCase = (str) => {
-  if (str.toLowerCase()) {
-    return true
-  } else if (!str.toLowerCase()) {
-    return false
+  const alpha = "abcdefghikjlmnopqrstuvwxyz"
+  for (const x of str) {
+    if (alpha.includes(x)) {
+      return true
+    }
   }
+  return false
 }
-
 
 const containsUpperCase = (str) => {
-  if (str.toLowerCase() && !str.toUpperCase()) {
-    return false
-  } else if (str.toUpperCase()) {
-    return true
-  } else if (str.toUpperCase()) {
-    return false
-  } else if (!str.toUpperCase()) {
-    return false
-  } else if (str.toLowerCase()) {
-    return true
+  const caps = "ABCDEFGHIKJLMNOPQRSTUVWXYZ"
+  for (const x of str) {
+    if (caps.includes(x)) {
+      return true
+    }
   }
+  return false
 }
 
-/*********************************
+const containsNonAlphanumeric = (s) => {
+  const alphaNumeric = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789"
+  for (const x of s) {
+    if (!alphaNumeric.includes(x)) {
+      return true
+    }
+  }
+  return false
+}
+
+const containsSpace = (str) => {
+  const space = " "
+  for (const x of str) {
+    if (space.includes(x)) {
+      return true
+    }
+  }
+  return false
+}
+
+const isValidPassword = (str) => {
+  return (
+    containsDigit(str) &&
+    containsLowerCase(str) &&
+    containsUpperCase(str) &&
+    containsNonAlphanumeric(str) &&
+    !containsSpace(str)
+  )
+}
+
+const getToBed = (person) => person.map((x) => {
+  if (x.localTime >= 100 && x.localTime <= 400) {
+    return {
+      name: x.name,
+      localTime: x.localTime,
+      asleep: true,
+    }
+  } else {
+    return x
+  }
+})
+
+// const digits = (num) => {
+//   num = num.toString()
+//   const numsArr = []
+//   for (const digit of num) {
+//     if (digit !== '-' && digit !== '.') {
+//       numsArr.push(Number(digit))
+      
+//     }
+//   }
+//   return numsArr
+// }
+
+const digits= (num) => num.toString().split('').filter((digits) => digits !== '-' && digits !== '.').map((digits) => Number(digits))
+
+/********************************
  * OUR CODE BELOW; DO NOT TOUCH! *
  *********************************/
 
